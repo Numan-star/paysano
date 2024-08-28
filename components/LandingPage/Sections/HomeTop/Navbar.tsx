@@ -6,6 +6,10 @@ import CancelSharpIcon from '@mui/icons-material/CancelSharp';
 import { useLanguage } from "@/context/LanguageContext";
 import globe from "@/public/language.svg";
 import dropdownicon from "@/public/dropdown.svg";
+import usericon from "@/public/user.svg";
+import carticon from "@/public/cart.svg";
+
+
 import { translations } from "@/constants/translations";
 
 const Navbar = () => {
@@ -39,9 +43,13 @@ const Navbar = () => {
           </Link>
         ))}
 
-        <Link href="/getstarted">
-          <Image src="/search.svg" alt="search" width={24} height={24} className="inline-block cursor-pointer " />
-        </Link>
+        {/* <Link href="/getstarted"> */}
+        <Image src="/search.svg" alt="search" width={24} height={24} className="inline-block cursor-pointer " />
+        <div className="flex gap-4">
+          <Image src={usericon} alt="user" width={30} height={30} className="inline-block" />
+          <Image src={carticon} alt="cart" width={30} height={30} className="inline-block" />
+        </div>
+        {/* </Link> */}
         <div className="relative">
           <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
             <Image src={globe} alt="globe" />

@@ -1,6 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { format } from 'date-fns'; // Import date-fns
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
+
+
 
 type VegetableCardProps = {
   iconSrc: string;
@@ -23,12 +28,19 @@ const VegetableCard: React.FC<VegetableCardProps> = ({
   percentage,
   description,
 }) => {
+  const formattedDate = format(new Date(date), 'MMM dd, yyyy'); // Adjust format as needed
+
   const CardContent = () => (
-    <div className='border rounded p-3 '>
+    <div className='border p-3 '>
       <div className='items-left '>
-        <Image src={iconSrc} alt={iconAlt} height={350} width={310} className='transform transition-transform duration-300 ease-in-out hover:scale-90 w-[100%]' />
-        <div className="flex justify-between mt-6">
-          <div className="ml-2">{date}</div>
+        <Image src={iconSrc} alt={iconAlt} height={400} width={380} className='object-cover rounded-lg transform transition-transform duration-300 ease-in-out w-[100%]'style={{ height: '300px' }}/>
+        <div className="flex justify-between mt-5">
+          <div className='flex gap-2 items-center'>
+            <div className='text-gray-500'>
+              <CalendarMonthIcon />
+            </div>
+            <div className="ml-2 text-gray-500">{formattedDate}</div>
+          </div>
           <div className='flex text-right text-green font-semibold'>{price}</div>
         </div>
       </div>
@@ -36,14 +48,14 @@ const VegetableCard: React.FC<VegetableCardProps> = ({
         <span>{productName}</span>
         <span className='text-green'>{percentage}</span>
       </div>
-      <div>{description}</div>
+      <div className='mt-2 text-gray-500'>{`${description.slice(0, 30)}...`}</div>
     </div>
   );
 
   if (productNameLink) {
     return (
       <Link href={productNameLink}>
-        <div className="hover:text-green">
+        <div>
           <CardContent />
         </div>
       </Link>

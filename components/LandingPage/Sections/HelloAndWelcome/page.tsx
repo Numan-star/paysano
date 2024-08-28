@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import axios from 'axios';
 import { useLanguage } from '@/context/LanguageContext';
+import RoundedButton from '@/common_views/RoundedButton';
 
 interface Category {
   id: number;
@@ -75,9 +76,8 @@ const HelloAndWelcome: React.FC = () => {
               <div className='flex flex-row gap-5'>
 
                 {categories.map((category) => (
-                  <div key={category.id} className='relative flex flex-col items-center transition-transform duration-300 ease-in-out transform hover:-translate-y-5 '>
-                    <div className='relative w-14 md:w-20 h-80 my-4 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:w-60'>
-                      
+                  <div key={category.id} className='relative flex flex-col items-center transition-transform duration-500 ease-in-out transform hover:-translate-y-3 '>
+                    <div className='relative w-14 md:w-20 h-80 my-4 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:w-64 overflow-hidden'>
                       <Image
                         src={`https://dashboard.paysano.it/public/storage/${category.image}`}
                         alt={category.name}

@@ -54,7 +54,7 @@ const TopStores: React.FC = () => {
                         <StoreCard
                             key={index}
                             storeName={store.name}
-                            openingHours={`${store.open_time} Am - ${store.close_time} Pm`}
+                            openingHours={`${store.open_time} - ${store.close_time}`}
                             rating={store.average_rating.toString()} // Converting number to string
                             numberOfReviews={store.reviews.toString()} // Converting number to string
                             imageSrc={store.profile_pic}

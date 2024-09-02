@@ -33,8 +33,8 @@ const VegetableCard: React.FC<VegetableCardProps> = ({
   const CardContent = () => (
     <div className='border p-3 '>
       <div className='items-left '>
-        <Image src={iconSrc} alt={iconAlt} height={400} width={380} className='object-cover rounded-lg transform transition-transform duration-300 ease-in-out w-[100%]'style={{ height: '300px' }}/>
-        <div className="flex justify-between mt-5">
+        <Image src={iconSrc} alt={iconAlt} height={400} width={380} className='object-cover rounded-lg transform transition-transform duration-300 ease-in-out w-full' style={{ height: '300px' }} />
+        {/* <div className="flex justify-between mt-5">
           <div className='flex gap-2 items-center'>
             <div className='text-gray-500'>
               <CalendarMonthIcon />
@@ -42,13 +42,14 @@ const VegetableCard: React.FC<VegetableCardProps> = ({
             <div className="ml-2 text-gray-500">{formattedDate}</div>
           </div>
           <div className='flex text-right text-green font-semibold'>{price}</div>
-        </div>
+        </div> */}
       </div>
-      <div className="font-bold mb-1 mt-2 flex justify-between">
-        <span>{productName}</span>
-        <span className='text-green'>{percentage}</span>
+      <div className="font-semibold mb-1 mt-2 flex justify-between">
+        <span className='text-xl'>{productName}</span>
+        {/* <span className='text-green'>{percentage}</span> */}
       </div>
-      <div className='mt-2 text-gray-500'>{`${description.slice(0, 30)}...`}</div>
+      <div className='mt-1 text-gray-500'>{`${description.slice(0, 25)}...`}</div>
+      <div className='mt-4 text-xl font-semibold text-green'>{price}</div>
     </div>
   );
 

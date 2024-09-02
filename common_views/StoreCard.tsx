@@ -66,13 +66,12 @@ const StoreCard: React.FC<StoreCardProps> = ({ storeName, openingHours, rating, 
 
     return (
         <div ref={cardRef} className="card rounded-lg border-white bg-white shadow-lg overflow-hidden">
-            <div className="image-container" style={{ width: '400px', height: '300px', position: 'relative' }}>
+            <div className="image-container z-10" style={{ width: '400px', height: '300px', position: 'relative' }}>
                 <Image
                     src={imageSrc}
                     alt={storeName}
                     layout="fill" 
                     objectFit="cover" 
-                    style={{ zIndex: 1 }} // Ensure the image stays on top
                 />
             </div>
             <div className="details flex flex-col items-start p-4">

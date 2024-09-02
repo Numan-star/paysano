@@ -49,8 +49,8 @@ const sharpSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Paysano",
-  description: "Near to nature",
+  title: "PaySano",
+  description: "Savor culinary wonders and explore curated retail gems on our platform. Indulge in diverse restaurant menus and discover unique store products, all in one place.",
 };
 
 export default function RootLayout({

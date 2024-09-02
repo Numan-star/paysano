@@ -55,7 +55,7 @@ const HelloAndWelcome: React.FC = () => {
       <div className='container mx-auto grid grid-cols-1 gap-10'>
 
         <div className='text-center'>
-          <h2 className='font-bold text-4xl'>{t('HELLO')}</h2>
+          <h2 className='font-bold text-4xl mb-4 tracking-wider'>{t('HELLO')}</h2>
           <div className=' mx-auto w-full md:w-3/6 '>
             <p dangerouslySetInnerHTML={{ __html: t('HELLO_DESCRIPTION') }}></p>
           </div>
@@ -78,6 +78,7 @@ const HelloAndWelcome: React.FC = () => {
                 {categories.map((category) => (
                   <div key={category.id} className='relative flex flex-col items-center transition-transform duration-500 ease-in-out transform hover:-translate-y-3 '>
                     <div className='relative w-14 md:w-20 h-80 my-4 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:w-64 overflow-hidden'>
+                      
                       <Image
                         src={`https://dashboard.paysano.it/public/storage/${category.image}`}
                         alt={category.name}
@@ -85,6 +86,7 @@ const HelloAndWelcome: React.FC = () => {
                         height={100}
                         className='object-cover h-full w-full'
                       />
+                      
                       <div className='absolute inset-0 flex items-center justify-center'>
                         <div className='transform -rotate-90 text-white text-4xl font-bold'>
                           {category.name}

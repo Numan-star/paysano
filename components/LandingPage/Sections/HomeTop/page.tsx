@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from "next/link";
 import Navbar from "@/components/LandingPage/Sections/HomeTop/Navbar";
 import RoundedButton from "@/common_views/RoundedButton";
 import { useLanguage } from '@/context/LanguageContext';
@@ -13,12 +14,12 @@ const HomeTop = () => {
   // const [showComponent, setShowComponent] = useState(false);
 
   // useEffect(() => {
-    
+
   //   const timeout = setTimeout(() => {
   //     setShowComponent(true);
   //   }, 500); 
 
-    
+
   //   return () => clearTimeout(timeout);
   // }, []);
 
@@ -40,20 +41,22 @@ const HomeTop = () => {
             {/* text div */}
             <div>
               <h2 className="font-bold text-[30px] lg:text-[70.42px] mb-3" dangerouslySetInnerHTML={{ __html: t('HEADER') }}>
-              
+
               </h2>
 
               <p className="text-[15px] lg:text-[20px] font-semibold text-black-50 "> {t('HEADER_DESCRIPTION')}</p>
             </div>
-            
+
             {/* button div */}
             <div>
-              <RoundedButton
-                type="button"
-                title={t('HEADER_BUTTON')}
-                variant="btn_dark_green"
-                className="transform transition-transform duration-300 ease-in-out hover:translate-x-2 font-bold"
-              />
+              <Link href="/products" className="mt-5">
+                <RoundedButton
+                  type="button"
+                  title={t('HEADER_BUTTON')}
+                  variant="btn_dark_green"
+                  className="transform transition-transform duration-500 ease-in-out hover:translate-x-2 font-bold"
+                />
+              </Link>
             </div>
           </div>
 

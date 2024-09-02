@@ -1,22 +1,19 @@
 
 export const translations = {
-    en: {
-      NAV_LINKS: [
-        { href: '/', key: 'home', label: 'Home' },
-        { href: '/about', key: 'how_hilink_work', label: 'About' },
-        { href: '/faqs', key: 'services', label: 'FAQs' },
-        { href: '/contactus', key: 'pricing ', label: 'Contact Us' },
-        { href: '/getstarted', key: 'pricing ', label: 'Get Started' },
-      ],
-    },
-    it: {
-      NAV_LINKS: [
-        { href: '/', key: 'home', label: 'Casa' },
-        { href: '/about', key: 'how_hilink_work', label: 'Informazioni' },
-        { href: '/faqs', key: 'services', label: 'Domande frequenti' },
-        { href: '/contactus', key: 'pricing ', label: 'Contattaci' },
-        { href: '/getstarted', key: 'pricing ', label: 'Inizia' },
-      ],
-    },
-  };
-  
+  en: {
+    NAV_LINKS: [
+      { href: '/', key: 'home', label: 'Home' },
+      { href: '/stores', key: 'stores', label: 'Stores' },
+      { href: '/restaurants', key: 'restaurants', label: 'Restaurants' },
+      { href: '/products', key: 'products', label: 'Products' },
+    ],
+  },
+  it: {
+    NAV_LINKS: [
+      { href: '/', key: 'home', label: 'Home' },
+      { href: '/stores', key: 'stores', label: 'Negozi' },
+      { href: '/restaurants', key: 'restaurants', label: 'Ristoranti' },
+      { href: '/products', key: 'products', label: 'Prodotti' },
+    ],
+  },
+};

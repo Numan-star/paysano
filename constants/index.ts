@@ -1,10 +1,9 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Home' },
-  { href: '/about', key: 'how_hilink_work', label: 'About' },
-  { href: '/faqs', key: 'services', label: 'FAQs' },
-  { href: '/contactus', key: 'pricing ', label: 'Contact Us' },
-  { href: '/getstarted', key: 'pricing ', label: 'Get Started' },
+  { href: '/stores', key: 'stores', label: 'Stores' },
+  { href: '/restaurants', key: 'restaurants', label: 'Restaurants' },
+  { href: '/products', key: 'products', label: 'Products' },
 ];
 
 // CAMP SECTION
@@ -145,7 +144,7 @@ export const VEGETABLES = {
 
   ]
 
- 
+
 
 
 };
@@ -156,31 +155,31 @@ export const Stores = {
       "iconSrc": "../storesSection/store1.svg",
       "iconAlt": "Store 1",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Live Healthy Organics",
+      "desc": "Live Healthy Organics",
       "starSrc": "../storesSection/star.svg",
-      "rating": "4" ,
+      "rating": "4",
       "reviews": "(9676 Reviews)",
     },
     {
       "iconSrc": "../storesSection/store2.svg",
       "iconAlt": "Store 1",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Live Healthy Organics",
+      "desc": "Live Healthy Organics",
       "starSrc": "../storesSection/star.svg",
-      "rating": "4" ,
+      "rating": "4",
       "reviews": "(9676 Reviews)",
     },
     {
       "iconSrc": "../storesSection/store3.svg",
       "iconAlt": "Store 1",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Live Healthy Organics",
+      "desc": "Live Healthy Organics",
       "starSrc": "../storesSection/star.svg",
-      "rating": "4" ,
+      "rating": "4",
       "reviews": "(9676 Reviews)",
     }
   ]
-    
+
 };
 
 export const Restaurants = {
@@ -189,16 +188,16 @@ export const Restaurants = {
       "iconSrc": "../storesSection/store3.svg",
       "iconAlt": "Store 3",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Spice Place Indian Cuisine",
+      "desc": "Spice Place Indian Cuisine",
       "starSrc": "../storesSection/star.svg",
-      "rating": "4 " ,
+      "rating": "4 ",
       "reviews": " (9676 Reviews)",
     },
     {
       "iconSrc": "../storesSection/store1.svg",
       "iconAlt": "Store 1",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Spice Place Indian Cuisine",
+      "desc": "Spice Place Indian Cuisine",
       "starSrc": "../storesSection/star.svg",
       "rating": "4 ",
       "reviews": " (9676 Reviews)",
@@ -207,7 +206,7 @@ export const Restaurants = {
       "iconSrc": "../storesSection/store2.svg",
       "iconAlt": "Store 2",
       "time": "11:30 AM - 12:30 PM",
-      "desc":  "Spice Place Indian Cuisine",
+      "desc": "Spice Place Indian Cuisine",
       "starSrc": "../storesSection/star.svg",
       "rating": "4 ",
       "reviews": " (9676 Reviews)",

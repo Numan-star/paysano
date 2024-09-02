@@ -7,7 +7,7 @@ const Contact = () => {
   const { t } = useLanguage();
 
   return (
-    <section className='flex flex-col md:flex-row justify-center px-6 md:px-12 py-12'>
+    <section className='flex flex-col md:flex-row justify-center px-6 md:px-12 py-12 bg-white'>
       {/* Contact Form */}
       <div className='flex flex-col justify-between md:w-1/2 p-6 md:p-12 bg-white'>
         <div>
@@ -15,7 +15,7 @@ const Contact = () => {
             <Image src="/contactSection/mail.svg" alt='mail' width={40} height={40} />
           </div>
           <h1 className='text-3xl font-bold text-left md:text-left mb-6'>{t('CONTACT')}</h1>
-          <div className='text-center md:text-left text-textGray mb-6'>
+          <div className='text-left md:text-left text-textGray mb-6'>
             <p>{t('CONTACT_DESCRIPTION')}</p>
           </div>
           <div className="flex flex-wrap mb-3 justify-evenly">

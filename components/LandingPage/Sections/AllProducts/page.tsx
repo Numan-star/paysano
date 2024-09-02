@@ -1,11 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-
 import Image from 'next/image';
 import axios from 'axios';
 import VegetableCard from '@/common_views/VegetableCard';
 import RoundedButton from '@/common_views/RoundedButton';
 import { useLanguage } from '@/context/LanguageContext';
+import ProductCard from '@/common_views/ProductCard';
 
 interface Vegetable {
   id: number;
@@ -18,10 +18,9 @@ interface Vegetable {
   category_name: string;
   created_at: string;
   description: string;
-
 }
 
-const AllVEGETABLES: React.FC = () => {
+const AllPRODUCTS: React.FC = () => {
   const [showComponent, setShowComponent] = useState(false);
   const [vegetables, setVegetables] = useState<Vegetable[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,7 +31,8 @@ const AllVEGETABLES: React.FC = () => {
     const fetchVegetables = async () => {
       try {
         const response = await axios.get('https://dashboard.paysano.it/public/api/landingPage/getVegetables');
-        setVegetables(response.data.data.slice(0, 6)); // Take only the first 6 vegetables
+        console.log(response);
+        setVegetables(response.data.data); 
         setLoading(false);
       } catch (error) {
         console.error("Error fetching vegetables:", error);
@@ -64,27 +64,12 @@ const AllVEGETABLES: React.FC = () => {
   return (
     <section
       id="allVEGETABLES"
-      className={`allVEGETABLES bg-white mt-20 transition-all duration-1000 ease-in-out ${showComponent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`allVEGETABLES mt-20 transition-all duration-1000 ease-in-out bg-gray-50 mb-20 ${showComponent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="flex flex-col lg:flex-row w-full justify-center">
-        <div className="relative lg:w-[900px]  h-[300px] sm:h-[450px] md:h-[500px] lg:h-[907px] xl:h-[860px] 2xl:h-[860px] overflow-hidden">
-
-          <Image
-            src="./allvegetablesSection/all.png"
-            alt="Vegetables"
-            fill
-            className=" lg:rotate-0 object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0000004D] bg-opacity-50 flex flex-col items-center justify-center text-center text-white p-4 ">
-            <h2 className="text-2xl lg:text-4xl font-semibold mb-4 opacity-100 tracking-wider">{t('ALL_VEGETABLES')}</h2>
-            <div className="bg-green h-[50px] w-[150px] rounded-full flex items-center justify-center transform transition-transform duration-300 ease-in-out hover:scale-110">
-              <RoundedButton type="button" title={t('RESTAURANTS_BUTTON')} variant="text-black font-bold tracking-wider" full={true} />
-            </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:ml-0 lg:gap-0 h-full">
+      <div className="px-4 lg:px-8 mx-auto w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2">
           {vegetables.map((vegetable: Vegetable) => (
-            <VegetableCard
+            <ProductCard
               key={vegetable.id}
               iconSrc={`https://dashboard.paysano.it/public/storage/${vegetable.image}`}
               iconAlt={vegetable.name}
@@ -103,4 +88,4 @@ const AllVEGETABLES: React.FC = () => {
   );
 };
 
-export default AllVEGETABLES;
+export default AllPRODUCTS;

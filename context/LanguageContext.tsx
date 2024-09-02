@@ -10,8 +10,11 @@ interface NavLink {
 interface Translation {
   NAV_LINKS: NavLink[];
   HEADER: string;
+  HEADER1: string;
   HEADER_DESCRIPTION: string;
+  HEADER_DESCRIPTION1: string;
   HELLO: string;
+  HELLO1: string;
   HELLO_DESCRIPTION: string;
   HEADER_BUTTON: string;
   ALL_VEGETABLES: string;
@@ -60,9 +63,12 @@ const translations: Translations = {
       // { href: '/getstarted', key: 'pricing', label: 'Get Started' },
     ],
     HEADER: 'Unveiling the Finest <span class="text-green">Stores</span> and <span class = "text-green">Restaurants </span>',
+    HEADER1: '<span class="text-green">Explore</span> Our Vibrant Selection of Products',
     HEADER_DESCRIPTION: 'Savor culinary wonders and explore curated retail gems on our platform. Indulge in diverse restaurant menus and discover unique store products, all in one place.',
+    HEADER_DESCRIPTION1: 'Welcome to our Products Category! Enjoy a diverse selection of fresh, carefully curated fruits, vegetables, and more, all bringing exceptional flavor and variety to your table.',
     HEADER_BUTTON: "Start your Exploration",
     HELLO: 'HELLO & WELCOME',
+    HELLO1: 'Product Category',
     HELLO_DESCRIPTION: 'Explore nearby restaurants and shops, discover enticing menus, read reviews, and effortlessly place orders. <span class = "text-green">Welcome to Paysano</span> where convenience meets local delights.',
     ALL_VEGETABLES: "Vegetables",
     RESTAURANTS_BUTTON: "View All",
@@ -102,9 +108,12 @@ const translations: Translations = {
       { href: '/products', key: 'products', label: 'Prodotti' },
     ],
     HEADER: 'Svelare i Migliori  <span class = "text-green"> Negozi </span> e <span class = "text-green"> Ristoranti</span>',
+    HEADER1: '<span class = "text-green"> Esplora </span>la nostra vivace selezione di prodotti',
     HEADER_DESCRIPTION: 'Assaporare meraviglie culinarie ed esplorare gioielli di vendita al dettaglio selezionati sulla nostra piattaforma. Concediti i vari menù dei ristoranti e scopri prodotti unici dei negozi, tutto in un unico posto.',
+    HEADER_DESCRIPTION1: 'Benvenuto nella nostra categoria di prodotti! Goditi una vasta selezione di frutta, verdura e altro ancora freschi e accuratamente curati, che portano sulla tua tavola un sapore e una varietà eccezionali.',
     HEADER_BUTTON: "Inizia la tua esplorazione",
     HELLO: 'Ciao e Benvenuto',
+    HELLO1: 'Categoria di prodotto',
     HELLO_DESCRIPTION: 'Esplora ristoranti e negozi nelle vicinanze, scopri menù allettanti, leggi recensioni e effettua ordini senza sforzo.<span class = "text-green"> Benvenuti a Paysano </span>, dove la comodità incontra le delizie locali.',
     ALL_VEGETABLES: "Verdure",
     RESTAURANTS_BUTTON: "Visualizza tutto",

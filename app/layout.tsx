@@ -61,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <LanguageProvider>
-        <body className={sharpSans.className} >{children}</body>
+        <body className={sharpSans.className}>{children}</body>
       </LanguageProvider>
     </html>
   );

@@ -8,7 +8,7 @@ import AllProducts from '@/components/LandingPage/Sections/AllProducts/page';
 import Footer from '@/components/LandingPage/Sections/Footer/page';
 
 
-const products = () => {
+const Products = () => {
 
   const { t } = useLanguage();
 
@@ -22,4 +22,4 @@ const products = () => {
   )
 }
 
-export default products
+export default Products

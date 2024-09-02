@@ -2,11 +2,10 @@
 
 import React from 'react'
 import HomeTop from "../../components/LandingPage/Sections/HomeTop/page";
-import { useLanguage } from '@/context/LanguageContext';
 import HelloAndWelcome from '@/components/LandingPage/Sections/HelloAndWelcome/page';
 import AllProducts from '@/components/LandingPage/Sections/AllProducts/page';
 import Footer from '@/components/LandingPage/Sections/Footer/page';
-
+import { useLanguage } from '@/context/LanguageContext';
 
 const Products = () => {
 

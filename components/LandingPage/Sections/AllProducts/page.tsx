@@ -24,9 +24,7 @@ const AllPRODUCTS: React.FC = () => {
   const [showComponent, setShowComponent] = useState(false);
   const [vegetables, setVegetables] = useState<Vegetable[]>([]);
   const [loading, setLoading] = useState(true);
-
   const { t } = useLanguage();
-
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
@@ -42,7 +40,6 @@ const AllPRODUCTS: React.FC = () => {
 
     fetchVegetables();
   }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       const bottom = window.innerHeight + window.scrollY;
@@ -56,11 +53,9 @@ const AllPRODUCTS: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   if (loading) {
     return <div>Loading...</div>;
   }
-
   return (
     <section
       id="allVEGETABLES"

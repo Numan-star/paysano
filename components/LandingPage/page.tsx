@@ -1,3 +1,5 @@
+'use client';
+
 import HomeTop from "./Sections/HomeTop/page";
 import HelloAndWelcome from "./Sections/HelloAndWelcome/page";
 import AllVegetables from "./Sections/AllVegetables/page";
@@ -8,7 +10,8 @@ import Footer from "./Sections/Footer/page";
 import { useLanguage } from '@/context/LanguageContext';
 
 
-const page = () => {
+
+const Page = () => {
     const { t } = useLanguage();
 
     return (
@@ -23,4 +26,4 @@ const page = () => {
         </div>
     )
 }
-export default page
+export default Page

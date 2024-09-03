@@ -1,16 +1,15 @@
-'use client'; // Ensure this is at the top of your file
+// app/product/[id]/page.tsx
+'use client';
 
-import { useRouter } from 'next/router'; // Import from 'next/router'
-import { useParams } from 'next/navigation'; // Import for useParams if needed
+import { useParams, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Link from "next/link";
-
-import axios from 'axios';
 import Image from 'next/image';
 import Navbar from '@/components/LandingPage/Sections/HomeTop/Navbar';
 import Footer from '@/components/LandingPage/Sections/Footer/page';
 import { useLanguage } from '@/context/LanguageContext';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Link from 'next/link';
+import LoadingBar from '@/components/LoadingBar'; // Import the LoadingBar component
 
 interface Vegetable {
   id: number;
@@ -25,29 +24,51 @@ interface Vegetable {
 }
 
 const formatPrice = (price: string) => parseFloat(price).toFixed(2);
-const formatDeliveryTime = (deliveryTime: string) => deliveryTime.replace(/(\d+)-(\d+)/, '$1 - $2');
+const formatDeliveryTime = (deliveryTime: string) =>
+  deliveryTime.replace(/(\d+)-(\d+)/, '$1 - $2');
 
-const VegetableDetail: React.FC = () => {
-  const { id } = useParams(); 
+const ProductDetail = () => {
+  const pathname = usePathname();
+  const isClickable = pathname === '/product/{id?}';
+  const { id } = useParams();
   const [vegetable, setVegetable] = useState<Vegetable | null>(null);
   const [loading, setLoading] = useState(true);
-
-  // const router = useRouter();
-
-  // const handleBackClick = () => {
-  //   router.back();
-  // };
-
+  const [progress, setProgress] = useState(0); // State to manage loading progress
   const { t } = useLanguage();
 
   useEffect(() => {
     if (id) {
       const fetchVegetable = async () => {
         try {
-          const response = await axios.get('https://dashboard.paysano.it/public/api/landingPage/getVegetables');
-          const selectedVegetable = response.data.data.find((veg: Vegetable) => veg.id === parseInt(id as string));
-          setVegetable(selectedVegetable);
-          setLoading(false);
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            'GET',
+            'https://dashboard.paysano.it/public/api/landingPage/getAllProducts',
+            true
+          );
+
+          xhr.onprogress = (event) => {
+            if (event.lengthComputable) {
+              const percentComplete = (event.loaded / event.total) * 100;
+              setProgress(percentComplete);
+            }
+          };
+
+          xhr.onload = () => {
+            const data = JSON.parse(xhr.responseText);
+            const selectedVegetable = data.data.find(
+              (veg: Vegetable) => veg.id === parseInt(id as string)
+            );
+            setVegetable(selectedVegetable);
+            setLoading(false);
+          };
+
+          xhr.onerror = () => {
+            console.error('Error fetching vegetable');
+            setLoading(false);
+          };
+
+          xhr.send();
         } catch (error) {
           console.error('Error fetching vegetable:', error);
           setLoading(false);
@@ -56,35 +77,42 @@ const VegetableDetail: React.FC = () => {
 
       fetchVegetable();
     } else {
-      setLoading(false); 
+      setLoading(false);
     }
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (!vegetable) return <div>Vegetable not found</div>;
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <LoadingBar/>
+        <p>{Math.floor(progress)}%</p>
+      </div>
+    );
+  }
+
+  if (!vegetable) return <div>Product not found</div>;
 
   return (
     <>
       <div className="p-10 lg:pt-10 lg:px-0">
         <Navbar />
       </div>
-      <div className='mx-6 flex gap-2 items-center mt-10'>
-        <div className='text-3xl font-bold'>
-          <Link href="/">
+      <div className="mx-6 flex gap-2 items-center mt-10">
+        <div className="text-3xl font-bold">
+          <Link href={isClickable ? '/' : '/products'}>
             <ArrowBackIcon
               className="inline-block cursor-pointer"
               fontSize="large"
-            // onClick={handleBackClick}
             />
           </Link>
         </div>
         <div>
-          <h1 className='text-3xl font-semibold'>Product Detail </h1>
+          <h1 className="text-3xl font-semibold">Product Detail</h1>
         </div>
       </div>
       <div
         id="VegetableDetail"
-        className="mx-auto mt-[40px] bg-white rounded-xl transition-all duration-1000 ease-in-out p-4 md:flex md:items-center md:justify-between md:p-8 lg:w-5/5 overflow-hidden max-w-full"
+        className="mx-auto mt-[40px] bg-white rounded-xl transition-all duration-1000 ease-in-out p-4 md:flex md:items-start md:justify-between md:p-8 lg:w-5/5 overflow-hidden max-w-full"
       >
         <div className="md:w-1/2 md:flex-shrink-0 md:pr-8 w-full">
           <Image
@@ -97,7 +125,9 @@ const VegetableDetail: React.FC = () => {
         </div>
 
         <div className="mt-6 md:mt-0 md:w-1/2 w-full">
-          <div className="text-4xl font-semibold hover:text-green">{vegetable.name}</div>
+          <div className="text-4xl font-semibold hover:text-green">
+            {vegetable.name}
+          </div>
           <p className="mt-2 text-gray-500 text-xl">{vegetable.description}</p>
 
           <div className="mt-12">
@@ -116,11 +146,15 @@ const VegetableDetail: React.FC = () => {
 
           <div className="mt-12">
             <span className="font-semibold text-2xl">VAT {t('Value')}</span>
-            <span className="text-green flex items-center font-semibold mt-2">{vegetable.vat_value}%</span>
+            <span className="text-green flex items-center font-semibold mt-2">
+              {vegetable.vat_value}%
+            </span>
           </div>
 
           <div className="mt-12 flex justify-between">
-            <span className="font-semibold text-4xl text-green">${formatPrice(vegetable.price)}</span>
+            <span className="font-semibold text-4xl text-green">
+              ${formatPrice(vegetable.price)}
+            </span>
           </div>
         </div>
       </div>
@@ -132,4 +166,4 @@ const VegetableDetail: React.FC = () => {
   );
 };
 
-export default VegetableDetail;
+export default ProductDetail;

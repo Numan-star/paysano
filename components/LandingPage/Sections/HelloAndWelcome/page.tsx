@@ -1,5 +1,8 @@
+// HelloAndWelcome.tsx
 'use client';
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
 import Image from "next/image";
 import axios from 'axios';
 import { useLanguage } from '@/context/LanguageContext';
@@ -16,12 +19,16 @@ interface Category {
 interface Props {
   checkButton: boolean;
   HELLO: string;
+  setSelectedCategoryId: (id: number) => void;
 }
 
-const HelloAndWelcome: React.FC<Props> = ({ checkButton, HELLO }) => {
+const HelloAndWelcome: React.FC<Props> = ({ checkButton, HELLO, setSelectedCategoryId }) => {
+  const pathname = usePathname();
+  const isClickable = pathname === '/products';
+
   const [showComponent, setShowComponent] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [activeCategory, setActiveCategory] = useState<'stores' | 'restaurants'>('stores'); // State to track active button
+  const [activeCategory, setActiveCategory] = useState<'stores' | 'restaurants'>('stores');
   const { t } = useLanguage();
 
   // Fetch categories based on active button
@@ -41,12 +48,10 @@ const HelloAndWelcome: React.FC<Props> = ({ checkButton, HELLO }) => {
   };
 
   useEffect(() => {
-    // Fetch data initially
     fetchCategories(activeCategory);
   }, [activeCategory]);
 
   useEffect(() => {
-    // Detect when the component comes into view
     const handleScroll = () => {
       const bottom = window.innerHeight + window.scrollY;
       const element = document.getElementById('helloAndWelcome');
@@ -100,9 +105,14 @@ const HelloAndWelcome: React.FC<Props> = ({ checkButton, HELLO }) => {
         )}
 
         <div className='flex items-center justify-center'>
-          <div className='flex flex-wrap gap-4 justify-center'>
+          <div className='flex flex-wrap gap-3 justify-center'>
             {categories.map((category) => (
-              <div key={category.id} className='relative flex flex-col items-center transition-transform duration-500 ease-in-out transform hover:-translate-y-3'>
+              <div
+                key={category.id}
+                className={`relative flex flex-col items-center transition-transform duration-500 ease-in-out transform ${isClickable ? 'hover:-translate-y-3 cursor-pointer' : ''
+                  }`}
+                onClick={isClickable ? () => setSelectedCategoryId(category.id) : undefined}
+              >
                 <div className='relative w-14 md:w-20 h-80 my-4 rounded-full overflow-hidden transition-all duration-300 ease-in-out hover:w-64 overflow-hidden'>
                   <Image
                     src={`https://dashboard.paysano.it/public/storage/${category.image}`}
@@ -124,6 +134,6 @@ const HelloAndWelcome: React.FC<Props> = ({ checkButton, HELLO }) => {
       </div>
     </section>
   );
-}
+};
 
 export default HelloAndWelcome;

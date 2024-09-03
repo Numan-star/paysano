@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 import Image from 'next/image';
 import logo from '@/public/logo-main.svg'
 import { useLanguage } from '@/context/LanguageContext';
@@ -17,7 +18,9 @@ const Footer = () => {
                         <p className="mx-auto lg:mx-0 lg:text-left md:text-center text-center">{t('FOOTER_DESCRIPTION')}</p>
                     </div>
                     <div className='my-5'>
-                        <Image src="/insta.svg" alt="insta icon" width={40} height={40} />
+                        <Link href="https://www.instagram.com/paysano.app">
+                            <Image src="/insta.svg" alt="insta icon" width={40} height={40} />
+                        </Link>
                     </div>
                 </div>
 

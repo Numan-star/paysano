@@ -20,17 +20,22 @@ interface Vegetable {
   description: string;
 }
 
-const AllPRODUCTS: React.FC = () => {
+interface Props {
+  selectedCategoryId: number | null; // Add this prop
+}
+const AllPRODUCTS: React.FC<Props> = ({ selectedCategoryId }) => {
   const [showComponent, setShowComponent] = useState(false);
   const [vegetables, setVegetables] = useState<Vegetable[]>([]);
   const [loading, setLoading] = useState(true);
   const { t } = useLanguage();
   useEffect(() => {
     const fetchVegetables = async () => {
+      if (selectedCategoryId === null) return;
       try {
-        const response = await axios.get('https://dashboard.paysano.it/public/api/landingPage/getVegetables');
+        // const response = await axios.get('https://dashboard.paysano.it/public/api/landingPage/getProducts');
+        const response = await axios.get(`https://dashboard.paysano.it/public/api/landingPage/getProducts/${selectedCategoryId}`);
         console.log(response);
-        setVegetables(response.data.data); 
+        setVegetables(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching vegetables:", error);
@@ -39,7 +44,8 @@ const AllPRODUCTS: React.FC = () => {
     };
 
     fetchVegetables();
-  }, []);
+  }, [selectedCategoryId]);
+  
   useEffect(() => {
     const handleScroll = () => {
       const bottom = window.innerHeight + window.scrollY;
@@ -72,7 +78,7 @@ const AllPRODUCTS: React.FC = () => {
               date={vegetable.created_at}
               price={`$${vegetable.price}/${vegetable.weight}`}
               productName={vegetable.name}
-              productNameLink={`/vegetable/${vegetable.id}`}
+              productNameLink={`/product/${vegetable.id}`}
               percentage={`${vegetable.vat_value}% VAT`}
               description={vegetable.description}
             />

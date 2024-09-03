@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import RoundedButton from '@/common_views/RoundedButton';
+import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 import { useLanguage } from '@/context/LanguageContext';
 
 const Contact = () => {
   const { t } = useLanguage();
+  const router = useRouter();
+
+  // State variables for form inputs
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+
+    // Show SweetAlert
+    Swal.fire({
+      title: 'Message Sent!',
+      text: 'Your message has been sent successfully!',
+      icon: 'success',
+      confirmButtonColor: "#8BC63E",
+      confirmButtonText: 'OK',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setName('');
+        setEmail('');
+        setMessage('');
+        router.push('/');
+      }
+    });
+  };
 
   return (
     <section className='flex flex-col md:flex-row justify-center px-6 md:px-12 py-12 bg-white'>
-      {/* Contact Form */}
       <div className='flex flex-col justify-between md:w-1/2 p-6 md:p-12 bg-white'>
         <div>
           <div className='flex items-center mb-5'>
@@ -34,14 +60,16 @@ const Contact = () => {
           </div>
         </div>
 
-        <form action="{{ route('contact') }}" method="POST" onSubmit={() => alert('Form submitted')}>
+        <form onSubmit={handleSubmit}>
           <div className='relative mb-4'>
             <input
               type="text"
               name="name"
               placeholder="Name"
               required
-              className='w-full bg-[#F4F4F4] rounded-lg p-4 pl-12 text-[#A1A3A0] placeholder-[#A1A3A0]'
+              value={name} 
+              onChange={(e) => setName(e.target.value)}
+              className='w-full bg-[#F4F4F4] rounded-lg p-4 pl-12 font-medium text-lime-600 placeholder-[#A1A3A0]'
             />
             <div className='absolute inset-y-0 left-0 flex items-center pl-4'>
               <Image src="/contactSection/user-icon.svg" alt='user icon' width={30} height={30} />
@@ -53,7 +81,9 @@ const Contact = () => {
               name="email"
               placeholder="Email Address"
               required
-              className='w-full bg-[#F4F4F4]  rounded-lg p-4 pl-12 text-[#A1A3A0] placeholder-[#A1A3A0]'
+              value={email} // Controlled input
+              onChange={(e) => setEmail(e.target.value)} // Update state
+              className='w-full bg-[#F4F4F4]  rounded-lg p-4 pl-12 font-medium text-lime-600 placeholder-[#A1A3A0]'
             />
             <div className='absolute inset-y-0 left-0 flex items-center pl-4'>
               <Image src="/contactSection/email-icon.svg" alt='email icon' width={30} height={30} />
@@ -64,7 +94,9 @@ const Contact = () => {
               name="message"
               placeholder="Message"
               required
-              className='w-full bg-[#F4F4F4] rounded-lg p-4 text-[#A1A3A0] placeholder-[#A1A3A0]'
+              value={message} // Controlled input
+              onChange={(e) => setMessage(e.target.value)} // Update state
+              className='w-full bg-[#F4F4F4] rounded-lg p-4 font-medium text-lime-600 placeholder-[#A1A3A0]'
               rows={5}
             />
           </div>

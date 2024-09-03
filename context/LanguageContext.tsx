@@ -56,9 +56,9 @@ const translations: Translations = {
   en: {
     NAV_LINKS: [
       { href: '/', key: 'home', label: 'Home' },
+      { href: '/products', key: 'products', label: 'Products' },
       { href: '/stores', key: 'stores', label: 'Stores' },
       { href: '/restaurants', key: 'restaurants', label: 'Restaurants' },
-      { href: '/products', key: 'products', label: 'Products' },
       // { href: '/vegetables', key: 'how_hilink_work', label: 'Vegetables' },
       // { href: '/getstarted', key: 'pricing', label: 'Get Started' },
     ],
@@ -103,9 +103,9 @@ const translations: Translations = {
   it: {
     NAV_LINKS: [
       { href: '/', key: 'home', label: 'Home' },
+      { href: '/products', key: 'products', label: 'Prodotti' },
       { href: '/stores', key: 'stores', label: 'Negozi' },
       { href: '/restaurants', key: 'restaurants', label: 'Ristoranti' },
-      { href: '/products', key: 'products', label: 'Prodotti' },
     ],
     HEADER: 'Svelare i Migliori  <span class = "text-green"> Negozi </span> e <span class = "text-green"> Ristoranti</span>',
     HEADER1: '<span class = "text-green"> Esplora </span>la nostra vivace selezione di prodotti',

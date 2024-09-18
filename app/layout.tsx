@@ -51,6 +51,9 @@ const sharpSans = localFont({
 export const metadata: Metadata = {
   title: "PaySano",
   description: "Savor culinary wonders and explore curated retail gems on our platform. Indulge in diverse restaurant menus and discover unique store products, all in one place.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

@@ -73,8 +73,49 @@ const Navbar = () => {
       />
 
       {/* Mobile Menu */}
-      <div
+      {/* <div
         className={`fixed top-0 left-0 w-full h-full bg-green z-50 transform ${openMenu ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden`}
+      >
+        <div className="flex justify-between p-4">
+          <Link href="/" className="lg:padding-container">
+            <Image src="/logo-main.svg" alt="logo" width={74} height={29} className="bg-white p-3 rounded-xl" />
+          </Link>
+          <CancelSharpIcon
+            fontSize="large"
+            className="cursor-pointer text-black"
+            onClick={toggleMenu}
+          />
+        </div>
+        <ul className="flex flex-col items-center gap-8 mt-8">
+          {t('NAV_LINKS').map((link) => (
+            <Link href={link.href} key={link.key} className="text-regular-16 flexCenter cursor-pointer pb-1 transition-all hover:font-bold">
+              {link.label}
+            </Link>
+          ))} */}
+
+      {/* <Link href="/getstarted">
+            <Image src="/search.svg" alt="search" width={24} height={24} className="inline-block cursor-pointer " />
+          </Link> */}
+      {/* <div className="relative">
+            <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
+              <Image src={globe} alt="globe" />
+              <p className="text-lg px-2">{language === 'en' ? 'English' : 'Italian'}</p>
+              <Image src={dropdownicon} alt="dropdown" />
+            </div>
+            {dropdownVisible && (
+              <div className="absolute top-11 right-0 bg-white p-3 rounded shadow-lg">
+                <p className="text-lg font-semibold p-3 cursor-pointer" onClick={() => changeLanguage('en')}>English</p>
+                <p className="text-lg font-semibold p-3 cursor-pointer" onClick={() => changeLanguage('it')}>Italian</p>
+              </div>
+            )}
+          </div>
+        </ul>
+      </div> */}
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-green z-50 transform ${openMenu ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden`}
+        style={{ width: '50%' }}  // Adjust width as needed
       >
         <div className="flex justify-between p-4">
           <Link href="/" className="lg:padding-container">
@@ -94,8 +135,8 @@ const Navbar = () => {
           ))}
 
           {/* <Link href="/getstarted">
-            <Image src="/search.svg" alt="search" width={24} height={24} className="inline-block cursor-pointer " />
-          </Link> */}
+      <Image src="/search.svg" alt="search" width={24} height={24} className="inline-block cursor-pointer " />
+    </Link> */}
           <div className="relative">
             <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
               <Image src={globe} alt="globe" />
@@ -111,6 +152,7 @@ const Navbar = () => {
           </div>
         </ul>
       </div>
+
     </nav>
   );
 };

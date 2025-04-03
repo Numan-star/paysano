@@ -48,12 +48,16 @@ const RestaurantDetailPage = () => {
   return (
     <>
 
-      <section
+      {/* <section
         id="restaurantDetail"
         className="min-h-[500px] lg:min-h-[700px] bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      > */}
+      <section
+        id="restaurantDetail"
+        className=""
       >
-        <div className="nav pt-10">
+        <div className="p-10 lg:pt-10 lg:px-0">
           <Navbar />
         </div>
       </section>

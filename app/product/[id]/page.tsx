@@ -9,8 +9,7 @@ import Footer from '@/components/LandingPage/Sections/Footer/page';
 import { useLanguage } from '@/context/LanguageContext';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
-import LoadingBar from '@/components/LoadingBar'; // Import the LoadingBar component
-
+import LoadingBar from '@/components/LoadingBar'; 
 interface Vegetable {
   id: number;
   name: string;
